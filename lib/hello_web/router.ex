@@ -20,8 +20,8 @@ defmodule HelloWeb.Router do
 
     get "/", PageController, :home
 
-    resources "/users", UserController
-    resources "/posts", PostController, only: [:index, :show]
+    # resources "/users", UserController
+    # resources "/posts", PostController, only: [:index, :show]
 
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
