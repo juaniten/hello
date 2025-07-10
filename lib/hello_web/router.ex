@@ -2,7 +2,7 @@ defmodule HelloWeb.Router do
   use HelloWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {HelloWeb.Layouts, :root}
@@ -19,10 +19,14 @@ defmodule HelloWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
     resources "/users", UserController
     resources "/posts", PostController, only: [:index, :show]
+
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
+
+    get "/redirect_test", PageController, :redirect_test
   end
 
   # Other scopes may use custom stacks.
